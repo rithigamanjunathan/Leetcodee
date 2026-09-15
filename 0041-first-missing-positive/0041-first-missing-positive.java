@@ -9,7 +9,7 @@ class Solution {
      }
       for(int i=0 ; i<nums.length;i++)
       {
-        if(set.contains(miss))
+        while(set.contains(miss))
         {
            miss ++;
         }
