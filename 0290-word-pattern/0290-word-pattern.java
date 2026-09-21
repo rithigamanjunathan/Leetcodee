@@ -25,7 +25,7 @@ class Solution {
             }
 
             if (wordToChar.containsKey(word)) {
-                if (wordToChar.get(word) != ch) {
+                if (!wordToChar.get(word).equals(ch)) {
                     return false;
                 }
             } else {
