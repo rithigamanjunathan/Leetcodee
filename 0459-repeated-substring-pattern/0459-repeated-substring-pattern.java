@@ -1,23 +1,33 @@
 class Solution {
     public boolean repeatedSubstringPattern(String s) 
     {
-     for(int len = 1; len <= s.length() / 2; len++) {
+  
+        int n = s.length();
 
-            if(s.length() % len != 0)
-                continue;
+        int[] lps = new int[n];
 
-            String pattern = s.substring(0, len);
+        int len = 0;
+        int i = 1;
 
-            StringBuilder sb = new StringBuilder();
+        while (i < n) {
 
-            for(int i = 0; i < s.length() / len; i++) {
-                sb.append(pattern);
+            if (s.charAt(i) == s.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
             }
-
-            if(sb.toString().equals(s))
-                return true;
+            else if (len > 0) {
+                len = lps[len - 1];
+            }
+            else {
+                lps[i] = 0;
+                i++;
+            }
         }
 
-        return false;    
+        int lastLPS = lps[n - 1];
+
+        return lastLPS > 0 && n % (n - lastLPS) == 0;
+  
     }
 }
