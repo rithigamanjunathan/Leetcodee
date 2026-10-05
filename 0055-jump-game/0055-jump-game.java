@@ -6,9 +6,7 @@ class Solution {
         {
             if(i>max_reach) return false;
             else
-            {
                 max_reach = Math.max(max_reach,i+nums[i]);
-            }
         }
      return true;
     }
